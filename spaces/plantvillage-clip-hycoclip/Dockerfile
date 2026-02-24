@@ -35,7 +35,7 @@ ARG DEMO_SAMPLES=300
 ENV HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media \
     DEMO_SAMPLES=${DEMO_SAMPLES} \
-    DEMO_HF_DATASET=Diancong/Basil_Health \
+    DEMO_HF_DATASET=AlvaroVasquezAI/Maize_Leaf_Diseases \
     DEMO_HF_SPLIT=validation
 
 # Precompute at build time so the Space starts fast.
