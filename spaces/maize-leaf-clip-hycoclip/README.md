@@ -8,7 +8,7 @@ app_port: 7860
 pinned: false
 ---
 
-# HyperView — PlantVillage (CLIP + HyCoCLIP)
+# HyperView — Maize Leaf (CLIP + HyCoCLIP)
 
 This Hugging Face Space runs HyperView with:
 

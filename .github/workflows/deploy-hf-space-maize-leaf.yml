@@ -1,24 +1,24 @@
-name: Deploy HF Space - PlantVillage CLIP HyCoCLIP
+name: Deploy HF Space - Maize Leaf CLIP HyCoCLIP
 
 on:
   push:
     branches: [main]
     paths:
-      - spaces/plantvillage-clip-hycoclip/**
-      - .github/workflows/deploy-hf-space-plantvillage.yml
+      - spaces/maize-leaf-clip-hycoclip/**
+      - .github/workflows/deploy-hf-space-maize-leaf.yml
       - .github/workflows/deploy-hf-space-reusable.yml
   repository_dispatch:
     types: [pypi-release]
   workflow_dispatch:
 
 concurrency:
-  group: deploy-hf-space-plantvillage
+  group: deploy-hf-space-maize-leaf
   cancel-in-progress: false
 
 jobs:
   deploy:
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
-      source_dir: spaces/plantvillage-clip-hycoclip
+      source_dir: spaces/maize-leaf-clip-hycoclip
       space_id: maximilian-franz/HyperView
     secrets: inherit
