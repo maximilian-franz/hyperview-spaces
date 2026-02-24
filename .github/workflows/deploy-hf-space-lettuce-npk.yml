@@ -20,5 +20,5 @@ jobs:
     uses: ./.github/workflows/deploy-hf-space-reusable.yml
     with:
       source_dir: spaces/lettuce-npk-clip-hycoclip
-      space_id: maximilian-franz/HyperView
+      space_id: maximilian-franz/HyperView-Lettuce
     secrets: inherit
