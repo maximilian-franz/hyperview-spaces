@@ -1,0 +1,24 @@
+name: Deploy HF Space - Healthy and Diseased Plant Leaves CLIP HyCoCLIP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - spaces/plant-leaves-clip-hycoclip/**
+      - .github/workflows/deploy-hf-space-plant-leaves.yml
+      - .github/workflows/deploy-hf-space-reusable.yml
+  repository_dispatch:
+    types: [pypi-release]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hf-space-plant-leaves
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-hf-space-reusable.yml
+    with:
+      source_dir: spaces/plant-leaves-clip-hycoclip
+      space_id: maximilian-franz/HyperView-Plants
+    secrets: inherit
