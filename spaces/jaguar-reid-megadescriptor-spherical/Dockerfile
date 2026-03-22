@@ -23,8 +23,10 @@ RUN pip install --upgrade pip
 
 ARG HYPERVIEW_VERSION=0.3.1
 
-# Install the released PyPI package plus the ML stack needed for timm-image.
-RUN pip install "hyperview[ml]==${HYPERVIEW_VERSION}" \
+# Install CPU-only PyTorch first (much smaller than default CUDA bundle),
+# then the released HyperView package with the ML extras.
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu \
+    && pip install "hyperview[ml]==${HYPERVIEW_VERSION}" \
     && python -c "import hyperview; print('hyperview', hyperview.__version__)"
 
 COPY --chown=user demo.py ./demo.py
