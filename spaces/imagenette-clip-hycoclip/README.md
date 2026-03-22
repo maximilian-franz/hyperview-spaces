@@ -10,25 +10,52 @@ pinned: false
 
 # HyperView — Imagenette (CLIP + HyCoCLIP)
 
-This Hugging Face Space runs HyperView with:
+This folder is the simplest copyable HyperView Space example in this repo.
+It keeps all dataset-specific settings in the constants block at the top of
+[demo.py](demo.py), so a coding agent can usually adapt it by editing one file.
+
+This example runs HyperView with:
 
 - CLIP embeddings (`openai/clip-vit-base-patch32`) for Euclidean layout
 - HyCoCLIP embeddings (`hycoclip-vit-s`) for Poincaré layout
 
-The Docker image installs the **latest HyperView from PyPI** and precomputes
-embeddings/layouts during build for fast runtime startup.
+The Docker image installs released HyperView packages from PyPI and precomputes
+the dataset, embeddings, and layouts during build for fast runtime startup.
 
-## Configuration
+## Reuse This Template
 
-Environment variables:
+When you copy this folder for your own dataset, change these parts first:
 
-- `DEMO_HF_DATASET` (default: `Multimodal-Fatima/Imagenette_validation`)
-- `DEMO_HF_SPLIT` (default: `validation`)
-- `DEMO_HF_IMAGE_KEY` (default: `image`)
-- `DEMO_HF_LABEL_KEY` (default: `label`)
-- `DEMO_SAMPLES` (default: `300`)
-- `DEMO_CLIP_MODEL` (default: `openai/clip-vit-base-patch32`)
-- `DEMO_HYPER_MODEL` (default: `hycoclip-vit-s`)
+1. Edit the constants block in [demo.py](demo.py).
+2. Rename the copied Space from `HyperView` to your own project name such as `yourproject-HyperView` or `HyperView-yourproject`.
+3. Update this README frontmatter, title, and H1.
+4. Point a deploy workflow at your new folder.
+
+This starter currently installs `hyperview==0.3.1` and `hyper-models==0.1.0`.
+
+The defaults in [demo.py](demo.py) are:
+
+- Hugging Face dataset: `Multimodal-Fatima/Imagenette_validation`
+- Split: `validation`
+- Image field: `image`
+- Label field: `label`
+- Sample count: `300`
+- Layouts: CLIP + Euclidean, HyCoCLIP + Poincaré
+
+If you only want one model in your own Space, keep a single entry in
+`EMBEDDING_LAYOUTS` and delete the rest.
+
+When contributing your own Space back to this repository, add a row to the
+community table in the root `README.md` and include your Hugging Face Space ID
+in the pull request description.
+
+## Build Model
+
+The Dockerfile runs `build_dataset()` during image build. That means:
+
+- the first expensive download/embedding pass happens at build time
+- the runtime container mostly just launches HyperView
+- there is no extra runtime configuration path to keep in sync
 
 ## Deploy source
 

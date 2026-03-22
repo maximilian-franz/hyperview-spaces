@@ -22,11 +22,10 @@ WORKDIR $HOME/app
 RUN pip install --upgrade pip
 
 ARG HYPERVIEW_VERSION=0.3.1
-ARG HYPER_MODELS_VERSION=0.1.0
 
-# Pin package versions so Docker cache cannot silently hold an older PyPI release.
-RUN pip install "hyperview==${HYPERVIEW_VERSION}" && python -c "import hyperview; print('hyperview', hyperview.__version__)"
-RUN pip install "hyper-models==${HYPER_MODELS_VERSION}" && python -c "import hyper_models; print('hyper_models', hyper_models.__version__)"
+# Install the released PyPI package plus the ML stack needed for timm-image.
+RUN pip install "hyperview[ml]==${HYPERVIEW_VERSION}" \
+    && python -c "import hyperview; print('hyperview', hyperview.__version__)"
 
 COPY --chown=user demo.py ./demo.py
 
