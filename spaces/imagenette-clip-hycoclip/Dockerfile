@@ -33,12 +33,12 @@ COPY --chown=user demo.py ./demo.py
 ENV HYPERVIEW_DATASETS_DIR=/home/user/app/demo_data/datasets \
     HYPERVIEW_MEDIA_DIR=/home/user/app/demo_data/media
 
-# Precompute at build time so the Space starts fast.
-RUN python -c "from demo import build_dataset; build_dataset()"
-
 EXPOSE 7860
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=600s --retries=3 \
     CMD curl -f http://localhost:7860/__hyperview__/health || exit 1
 
+# Dataset is built at first startup (model download + embedding computation).
+# Precomputing at Docker build time causes LanceDB to be stored in overlay
+# filesystem layers, which are extremely slow to reopen on free-tier CPUs.
 CMD ["python", "demo.py"]

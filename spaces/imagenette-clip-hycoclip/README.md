@@ -19,8 +19,8 @@ This example runs HyperView with:
 - CLIP embeddings (`openai/clip-vit-base-patch32`) for Euclidean layout
 - HyCoCLIP embeddings (`hycoclip-vit-s`) for Poincaré layout
 
-The Docker image installs released HyperView packages from PyPI and precomputes
-the dataset, embeddings, and layouts during build for fast runtime startup.
+The Docker image installs released HyperView packages from PyPI. The dataset,
+embeddings, and layouts are computed at first startup.
 
 ## Reuse This Template
 
