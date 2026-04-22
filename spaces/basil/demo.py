@@ -22,30 +22,30 @@ SAMPLE_SEED = 42
 
 # Keep one or more entries here. Most reuses only need one model/layout pair.
 EMBEDDING_LAYOUTS = [
-    {
-        "name": "SAM3",
-        "provider": "embed-anything",
-        "model": "facebook/sam3",
-        "layout": "euclidean",
-    },
-    {
-        "name": "ResNet-50",
-        "provider": "embed-anything",
-        "model": "microsoft/resnet-50",
-        "layout": "euclidean",
-    },
-    {
-        "name": "DINOv3",
-        "provider": "embed-anything",
-        "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
-        "layout": "euclidean",
-    },
-    {
-        "name": "C-RADIO",
-        "provider": "embed-anything",
-        "model": "nvidia/C-RADIO",
-        "layout": "euclidean",
-    },
+    # {
+    #     "name": "SAM3",
+    #     "provider": "embed-anything",
+    #     "model": "facebook/sam3",
+    #     "layout": "euclidean",
+    # },
+    # {
+    #     "name": "ResNet-50",
+    #     "provider": "embed-anything",
+    #     "model": "microsoft/resnet-50",
+    #     "layout": "euclidean",
+    # },
+    # {
+    #     "name": "DINOv3",
+    #     "provider": "embed-anything",
+    #     "model": "facebook/dinov3-vitl16-pretrain-lvd1689m",
+    #     "layout": "euclidean",
+    # },
+    # {
+    #     "name": "C-RADIO",
+    #     "provider": "embed-anything",
+    #     "model": "nvidia/C-RADIO",
+    #     "layout": "euclidean",
+    # },
     {
         "name": "CLIP",
         "provider": "embed-anything",
